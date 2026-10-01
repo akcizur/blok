@@ -6,6 +6,7 @@ type PostCardProps = {
   mode: ViewMode
   index: number
   articleClassName: string
+  onOpen: (id: number) => void
 }
 
 function PostMeta({ post, compact = false }: { post: Post; compact?: boolean }) {
@@ -20,7 +21,7 @@ function PostMeta({ post, compact = false }: { post: Post; compact?: boolean }) 
   )
 }
 
-export function PostCard({ post, mode, index, articleClassName }: PostCardProps) {
+export function PostCard({ post, mode, index, articleClassName, onOpen }: PostCardProps) {
   if (mode === 'compact') {
     return (
       <a className="post-link" href={`?post=${post.id}`} aria-label={`Číst: ${post.title}`}><article className={articleClassName} tabIndex={0}>
@@ -28,7 +29,7 @@ export function PostCard({ post, mode, index, articleClassName }: PostCardProps)
           <span className="compact-title">{post.title}</span>
         </div>
         <PostMeta post={post} compact />
-      </article></a>
+      </article></button>
     )
   }
 
@@ -41,7 +42,7 @@ export function PostCard({ post, mode, index, articleClassName }: PostCardProps)
         <PostMeta post={post} />
         <h4>{post.title}</h4>
         {index === 0 && <p>{post.excerpt}</p>}
-      </article></a>
+      </article></button>
     )
   }
 
@@ -51,7 +52,7 @@ export function PostCard({ post, mode, index, articleClassName }: PostCardProps)
         <PostMeta post={post} />
         <h4>{post.title}</h4>
         <p>{post.excerpt}</p>
-      </article></a>
+      </article></button>
     )
   }
 
@@ -60,6 +61,6 @@ export function PostCard({ post, mode, index, articleClassName }: PostCardProps)
       <h4>{post.title}</h4>
       <p>{post.excerpt}</p>
       <PostMeta post={post} />
-    </article></a>
+    </article></button>
   )
 }
