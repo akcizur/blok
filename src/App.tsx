@@ -126,17 +126,6 @@ export default function App() {
                   }
                 }}
               >
-                <button
-                  type="button"
-                  className="nav-button nav-search-action"
-                  onClick={() => searchInputRef.current?.focus()}
-                  aria-label="Zaměřit vyhledávání"
-                  title="Hledat"
-                  tabIndex={searchOpen ? 0 : -1}
-                >
-                  <Search className="ui-icon" size={14} strokeWidth={2} aria-hidden="true" />
-                </button>
-
                 <input
                   ref={searchInputRef}
                   className="nav-search-input"
@@ -149,6 +138,17 @@ export default function App() {
                   spellCheck={false}
                   tabIndex={searchOpen ? 0 : -1}
                 />
+
+                <button
+                  type="button"
+                  className="nav-search-action"
+                  onClick={() => searchInputRef.current?.focus()}
+                  aria-label="Zaměřit vyhledávání"
+                  title="Hledat"
+                  tabIndex={searchOpen ? 0 : -1}
+                >
+                  <Search className="ui-icon" size={14} strokeWidth={2} aria-hidden="true" />
+                </button>
 
                 <button
                   type="button"
@@ -233,6 +233,7 @@ export default function App() {
                 mode={viewMode}
                 index={index}
                 articleClassName={`post post-${viewMode}`}
+                onOpen={navigateToPost}
               />
             ))}
           </div>
