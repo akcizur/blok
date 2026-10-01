@@ -8,6 +8,7 @@ import {
   X,
 } from 'lucide-react'
 import { PostPage } from './components/PostPage'
+import { ContentSkeleton } from './components/ContentSkeleton'
 import { PostCard } from './components/PostCard'
 import { posts } from './data/posts'
 import { VIEW_MODE_ORDER, VIEW_MODES } from './config/viewModes'
@@ -28,6 +29,26 @@ export default function App() {
   })
 
   const { theme, viewMode } = preferences
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false)
+  const transitionTimerRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (transitionTimerRef.current !== null) window.clearTimeout(transitionTimerRef.current)
+    }
+  }, [])
+
+  function navigateToPost(id: number | null) {
+    setIsPageTransitioning(true)
+    const url = id ? `?post=${id}` : window.location.pathname
+    window.history.pushState({}, '', url)
+    if (transitionTimerRef.current !== null) window.clearTimeout(transitionTimerRef.current)
+    window.requestAnimationFrame(() => {
+      setSelectedPostId(id)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      transitionTimerRef.current = window.setTimeout(() => setIsPageTransitioning(false), 420)
+    })
+  }
 
   const selectedPost = selectedPostId
     ? posts.find(post => post.id === selectedPostId)
@@ -202,9 +223,12 @@ export default function App() {
 
       </header>
 
-      {selectedPost ? (
-        <PostPage post={selectedPost} />
-      ) : (
+      <div className={`page-stage${isPageTransitioning ? ' is-transitioning' : ''}`}>
+        {isPageTransitioning ? (
+          <ContentSkeleton post={Boolean(selectedPost)} mode={viewMode} />
+        ) : selectedPost ? (
+          <PostPage post={selectedPost} onBack={() => navigateToPost(null)} />
+        ) : (
         <main className="main-content">
           <section className="hero">
             <h1 className="hero-title">
@@ -277,7 +301,8 @@ export default function App() {
             )}
           </section>
         </main>
-      )}
+        )}
+      </div>
 
       <footer className="site-footer">
         <div className="footer-inner">
