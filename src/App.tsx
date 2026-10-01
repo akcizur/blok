@@ -30,6 +30,7 @@ export default function App() {
 
   const { theme, viewMode } = preferences
   const [isPageTransitioning, setIsPageTransitioning] = useState(false)
+  const [transitionTargetPost, setTransitionTargetPost] = useState(false)
   const transitionTimerRef = useRef<number | null>(null)
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function App() {
   }, [])
 
   function navigateToPost(id: number | null) {
+    setTransitionTargetPost(id !== null)
     setIsPageTransitioning(true)
     const url = id ? `?post=${id}` : window.location.pathname
     window.history.pushState({}, '', url)
@@ -225,7 +227,7 @@ export default function App() {
 
       <div className={`page-stage${isPageTransitioning ? ' is-transitioning' : ''}`}>
         {isPageTransitioning ? (
-          <ContentSkeleton post={Boolean(selectedPost)} mode={viewMode} />
+          <ContentSkeleton post={transitionTargetPost} mode={viewMode} />
         ) : selectedPost ? (
           <PostPage post={selectedPost} onBack={() => navigateToPost(null)} />
         ) : (
