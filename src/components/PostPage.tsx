@@ -3,15 +3,16 @@ import type { Post } from '../data/posts'
 
 type PostPageProps = {
   post: Post
+  onBack: () => void
 }
 
-export function PostPage({ post }: PostPageProps) {
+export function PostPage({ post, onBack }: PostPageProps) {
   return (
     <main className="main-content post-page">
-      <a className="back-link" href="./" aria-label="Zpět na poznámky">
+      <button type="button" className="back-link back-button" onClick={onBack} aria-label="Zpět na poznámky">
         <ArrowLeft className="ui-icon" size={16} strokeWidth={2} aria-hidden="true" />
         <span>Zpět na poznámky</span>
-      </a>
+      </button>
 
       <article className="post-detail">
         <h1 className="post-detail-title">{post.title}</h1>
