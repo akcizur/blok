@@ -1117,3 +1117,30 @@ article:focus-visible {
   .page-stage, .skeleton-line { animation: none !important; }
   .nav-search-shell, .nav-search-form, .nav-search-trigger { transition-duration: .01ms !important; }
 }
+
+.nav-search-action {
+  flex: 0 0 22px;
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+.nav-search-action:hover,
+.nav-search-action:focus-visible {
+  background: var(--surface-strong);
+  color: var(--text);
+  outline: none;
+}
+.nav-search-input { order: 1; }
+.nav-search-action { order: 2; }
+.nav-search-close { order: 3; }
+.nav-search-form { gap: 5px; }
