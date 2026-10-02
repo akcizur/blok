@@ -18,7 +18,7 @@ Původní main zůstává nedotčený.
 - 6. Zachovat 768px editorialní šířku.
 - 7. Zachovat Google Sans pro UI.
 - 8. Zachovat Fragment Mono pro metadata.
-- 9. Zachovat čtyři existující view modes.
+- 9. Zachovat existující view modes jako stabilní základ.
 - 10. Zachovat light/dark preference.
 - 11. Přidat persistentní oblíbené články.
 - 12. Přidat persistentní historii čtení.
@@ -194,12 +194,16 @@ Původní main zůstává nedotčený.
 - 182. Zachovat grid mode.
 - 183. Zachovat magazine mode.
 - 184. Zachovat compact mode.
-- 185. Zachovat layout cycling.
-- 186. Zachovat layout persistence.
-- 187. Přidat layout command.
-- 188. Zachovat mode-specific skeleton.
-- 189. Zachovat mode-specific cards.
-- 190. Zachovat mode-specific metadata.
+- 185. Přidat timeline mode.
+- 186. Přidat editorial mode.
+- 187. Přidat index mode.
+- 188. Přidat columns mode.
+- 189. Zachovat layout cycling.
+- 190. Zachovat layout persistence.
+- 191. Přidat layout command.
+- 192. Zachovat mode-specific skeleton.
+- 193. Zachovat mode-specific cards.
+- 194. Zachovat mode-specific metadata.
 - 191. Zachovat search across title.
 - 192. Zachovat search across excerpt.
 - 193. Zachovat search across category.
