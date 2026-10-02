@@ -1676,3 +1676,11 @@ html[data-reduced-motion='true'] .page-stage {
     animation: none !important;
   }
 }
+
+
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
