@@ -174,9 +174,11 @@ export function PostCard({
     <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName + (index === 0 ? ' is-featured' : '')}>
         <CardPreview post={post} mode={mode} />
-        <PostMeta post={post} showTags />
-        <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
-        <p>{post.excerpt}</p>
+        <div className="post-card-copy">
+          <PostMeta post={post} showTags />
+          <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
+          <p>{post.excerpt}</p>
+        </div>
       </article>
     </PostLink>
   )
