@@ -2,7 +2,7 @@
 
 ## 1. Účel
 
-Toto je technická mapa Dimple / KAAP.
+Toto je technická mapa Blok.
 
 Definuje:
 
@@ -19,7 +19,7 @@ Definuje:
 
 ## 2. Root tree
 
-    kaap/
+    blok/
     ├── .github/
     │   └── workflows/
     │       └── deploy-pages.yml
@@ -29,7 +29,7 @@ Definuje:
     ├── src/
     │   ├── App.tsx
     │   ├── components/
-    │   │   ├── ModeButton.tsx
+    │   │   ├── navigation/SearchField.tsx
     │   │   ├── PostCard.tsx
     │   │   └── PostPage.tsx
     │   ├── config/
@@ -58,7 +58,7 @@ Definuje:
 | App.tsx | orchestrace + state + direct navbar controls |
 | PostCard.tsx | post presentation |
 | PostPage.tsx | detail presentation |
-| ModeButton.tsx | reusable mode control |
+| navigation/SearchField.tsx | reusable mode control |
 | viewModes.ts | mode configuration |
 | posts.ts | content data |
 | usePreferences.ts | theme/view persistence |
@@ -103,7 +103,6 @@ App.tsx vlastní:
     subscribed
     language
     scale
-    searchOpen
     searchOpen
     searchQuery
     selectedPostId
@@ -202,9 +201,9 @@ Search je synchronní klientský filtr.
 
 ## 10. Routing flow
 
-Použit je query-param routing:
+Použit je path-based routing:
 
-    ?post=1
+    /post/01-good-product
 
 Inicializace:
 
@@ -340,7 +339,7 @@ Nízká coupling:
 
 - Post.
 
-### ModeButton.tsx
+### navigation/SearchField.tsx
 
 Malý reusable primitive.
 
@@ -481,7 +480,7 @@ Lokální výchozí base:
 
 Pro aktuální repository:
 
-/kaap/
+/blok/
 
 ---
 
@@ -678,7 +677,7 @@ Bez vědomého redesignu zachovat:
 - App jako orchestration root,
 - PostCard jako presentation switch,
 - usePreferences jako persistence boundary,
-- query-param detail,
+- slug-based detail,
 - global CSS token system,
 - GitHub Pages deployment.
 
