@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { flushSync } from 'react-dom'
-import { Bookmark, Check, Command, Copy, Filter, Globe2, Mail, Moon, Search, Share2, Sun, X } from 'lucide-react'
+import { Bookmark, Command, Copy, Filter, Globe2, Mail, Moon, Search, Sun, X } from 'lucide-react'
 import { ContentSkeleton } from './components/ContentSkeleton'
 import { PostCard } from './components/PostCard'
 import { PostPage } from './components/PostPage'
@@ -46,6 +46,7 @@ export default function App() {
   const [fontScale, setFontScale] = useState<FontScale>(() => getStoredFontScale())
   const [focusFavorites, setFocusFavorites] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [motionReduced, setMotionReduced] = useState(() => getReducedMotionPreference())
   const [selectedPostId, setSelectedPostId] = useState<number | null>(() => resolvePostId(readRoute()))
   const [isPageTransitioning, setIsPageTransitioning] = useState(false)
   const [transitionTargetPost, setTransitionTargetPost] = useState(false)
@@ -55,8 +56,9 @@ export default function App() {
 
   useEffect(() => { applyFontScale(fontScale) }, [fontScale])
   useEffect(() => {
-    if (getReducedMotionPreference()) document.documentElement.dataset.reducedMotion = 'true'
-  }, [])
+    setReducedMotionPreference(motionReduced)
+    document.documentElement.dataset.reducedMotion = motionReduced ? 'true' : 'false'
+  }, [motionReduced])
 
   const tags = useMemo(() => uniqueTags(posts), [])
   const orderedPosts = useMemo(() => {
@@ -109,7 +111,7 @@ export default function App() {
       window.scrollTo(0, 0)
       setIsPageTransitioning(false)
     }
-    const reduced = getReducedMotionPreference() || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const reduced = motionReduced || window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const doc = document as ViewTransitionDocument
     document.documentElement.dataset.navDirection = pageDirection(selectedPostId, nextId)
     if (!reduced && doc.startViewTransition) {
@@ -123,7 +125,7 @@ export default function App() {
       transitionTimerRef.current = null
       window.requestAnimationFrame(() => { update(); if (restoreHome) restoreScroll('home') })
     }, reduced ? 0 : 90)
-  }, [restoreScroll, selectedPostId])
+  }, [motionReduced, restoreScroll, selectedPostId])
 
   const navigateToPost = useCallback((postOrId: Post | number | null) => {
     const id = typeof postOrId === 'number' || postOrId === null ? postOrId : postOrId.id
@@ -185,9 +187,7 @@ export default function App() {
   function handleTag(value: string) { setActiveTag(value); setStoredTag(value) }
   function handleScale(value: FontScale) { setFontScale(value); setStoredFontScale(value) }
   function handleMotion() {
-    const next = !getReducedMotionPreference()
-    setReducedMotionPreference(next)
-    document.documentElement.dataset.reducedMotion = next ? 'true' : 'false'
+    setMotionReduced(value => !value)
   }
   async function copyLink() {
     const href = window.location.href
@@ -202,7 +202,7 @@ export default function App() {
     { id: 'favorite-filter', label: focusFavorites ? 'Zobrazit všechny' : 'Jen oblíbené', hint: 'F', icon: Bookmark, onRun: () => setFocusFavorites(value => !value) },
     { id: 'filters', label: filtersOpen ? 'Skrýt filtry' : 'Zobrazit filtry', icon: Filter, onRun: () => setFiltersOpen(value => !value) },
     { id: 'scale', label: 'Velikost textu: ' + fontScale, icon: Copy, onRun: () => handleScale(fontScale === 'small' ? 'normal' : fontScale === 'normal' ? 'large' : 'small') },
-    { id: 'motion', label: 'Pohyb: ' + (getReducedMotionPreference() ? 'omezený' : 'plný'), icon: Command, onRun: handleMotion },
+    { id: 'motion', label: 'Pohyb: ' + (motionReduced ? 'omezený' : 'plný'), icon: Command, onRun: handleMotion },
     { id: 'copy', label: 'Kopírovat odkaz', icon: Copy, onRun: copyLink },
   ]
 
