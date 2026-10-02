@@ -12,6 +12,7 @@ export type Post = {
   content: string
   timestamp: number
   wordCount: number
+  previewImage?: string
 }
 
 const markdownModules = import.meta.glob('../content/posts/*.md', {
@@ -57,6 +58,8 @@ function toPost(path: string, source: string): Post {
   const tags = Array.isArray(data.tags) && data.tags.length > 0 ? data.tags : [category]
   const timestamp = parseDate(date)
   const wordCount = body.split(/\s+/).filter(Boolean).length
+  const renderedContent = renderMarkdown(body)
+  const previewImage = renderedContent.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1]
 
   return {
     id,
@@ -67,9 +70,10 @@ function toPost(path: string, source: string): Post {
     readTime: calculateReadTime(body) + ' min',
     slug,
     tags,
-    content: renderMarkdown(body),
+    content: renderedContent,
     timestamp,
     wordCount,
+    previewImage,
   }
 }
 
