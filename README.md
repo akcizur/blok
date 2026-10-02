@@ -3,7 +3,7 @@
 > Osobní blog a publikační rozhraní postavené na Vite + React + TypeScript. Jednoduché, monochromatické, statické a připravené pro GitHub Pages.
 
 [![Website](https://img.shields.io/badge/website-blok.ruzickajakub.cz-000000?style=flat-square)](https://blok.ruzickajakub.cz)
-[![GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-000000?style=flat-square)](https://akcizur.github.io/blog.ruzickajakub.cz/)
+[![GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-000000?style=flat-square)](https://akcizur.github.io/blok/)
 [![Stack](https://img.shields.io/badge/stack-Vite%20%2B%20React%20%2B%20TS-000000?style=flat-square)](#technologický-stack)
 
 Blok je minimalistický blogový frontend pro psaní, myšlení a publikování. Projekt je navržen jako statická aplikace bez backendu, bez databáze a bez CMS. Obsah článků je uložený v Markdown souborech a při buildu se načítá jako součást aplikace. Vzhled a UX jsou navržené pro dlouhé čtení a nízkou režii.
@@ -15,7 +15,7 @@ Blok je minimalistický blogový frontend pro psaní, myšlení a publikování.
 - režimy zobrazení článků: List, Grid, Magazine, Compact
 - tématický režim Light / Dark
 - vyhledávání v článcích v klientu
-- vnořený detail článku přes query parametr `?post=N`
+- detail článku přes čistou URL `/post/<slug>` s podporou starého `?post=N`
 - monochromatická vizuální identita
 - deployment přes GitHub Pages
 
@@ -119,7 +119,7 @@ Při buildu Vite načte všechny `*.md` soubory přes `import.meta.glob`. `src/d
 
 - vyhledávání probíhá čistě v prohlížeči
 - články se filtrují na základě metadat i obsahu Markdownu
-- detail článku se otevírá přes `?post=<id>`
+- detail článku používá `/post/<slug>`; staré `?post=<id>` URL se automaticky převedou
 - URL je synchronizována s výběrem článku
 - `Escape` zavírá vyhledávací overlay
 
@@ -186,7 +186,9 @@ Hlavní konfigurace:
 Aplikace používá jednoduchý statický přístup ke článkům:
 
 ```text
-/ ?post=1
+/                  # seznam
+/post/01-good-product  # detail
+?post=1             # legacy kompatibilita
 ```
 
 Toto je vhodné pro malé osobní publikum. Pro složitější routování by se časem hodilo zavést explicitní router.
@@ -209,7 +211,7 @@ V repozitáři jsou doplňkové dokumenty:
 
 ## Repository
 
-- GitHub: https://github.com/akcizur/blog.ruzickajakub.cz
+- GitHub: https://github.com/akcizur/blok
 - Web: https://blok.ruzickajakub.cz
 
 ## Licence
