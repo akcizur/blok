@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react'
 import type { Post } from '../data/posts'
 import { MarkdownRenderer } from './MarkdownRenderer'
 import { PostNavigation } from './PostNavigation'
+import { ReadingProgress } from './ReadingProgress'
 
 type PostPageProps = {
   post: Post
@@ -28,6 +29,7 @@ export function PostPage({ post, posts, onBack, onOpenPost }: PostPageProps) {
 
   return (
     <main className="main-content post-page">
+      <ReadingProgress />
       <button type="button" className="back-link back-button" onClick={onBack} aria-label="Zpět na poznámky">
         <ArrowLeft className="ui-icon" size={16} strokeWidth={2} aria-hidden="true" />
         <span>Zpět na poznámky</span>
