@@ -1098,6 +1098,7 @@ article:focus-visible {
 .skeleton-code .skeleton-line { width: 88%; }
 .skeleton-code .medium { width: 64%; }
 .post-link-button {
+  display: block;
   width: 100%;
   padding: 0;
   border: 0;
@@ -1105,7 +1106,12 @@ article:focus-visible {
   color: inherit;
   text-align: left;
   font: inherit;
+  text-decoration: none;
   cursor: pointer;
+}
+
+.post-link-button:visited {
+  color: inherit;
 }
 .back-button {
   border: 0;
