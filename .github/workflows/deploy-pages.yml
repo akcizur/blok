@@ -48,6 +48,8 @@ jobs:
           test -f dist/index.html
           test -f dist/404.html
           test -f dist/styles.css
+          test -f dist/manifest.webmanifest
+          test -f dist/sitemap.xml
           if grep -q '%BASE_URL%' dist/index.html; then
             echo "Unresolved %BASE_URL% placeholder in dist/index.html"
             exit 1
