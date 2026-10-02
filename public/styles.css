@@ -2049,7 +2049,7 @@ html[data-reduced-motion='true'] .page-stage {
 
 .post-card-title {
   position: relative;
-  width: fit-content;
+  width: 100%;
   max-width: 100%;
   padding-bottom: 8px;
 }
@@ -2059,18 +2059,18 @@ html[data-reduced-motion='true'] .page-stage {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 42px;
+  width: 54px;
   height: 1px;
   background: var(--text);
   transform-origin: left center;
-  transform: scaleX(.55);
+  transform: scaleX(.7);
   opacity: .28;
   transition: width .65s cubic-bezier(.16, 1, .3, 1), transform .65s cubic-bezier(.16, 1, .3, 1), opacity .35s ease;
 }
 
 .post:hover .post-card-title::after,
 .post-link-button:focus-visible .post-card-title::after {
-  width: min(100%, 520px);
+  width: 100%;
   transform: scaleX(1);
   opacity: .9;
 }
