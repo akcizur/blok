@@ -1684,3 +1684,268 @@ html[data-reduced-motion='true'] .page-stage {
     animation: none !important;
   }
 }
+
+/* Extended layout modes */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.posts-grid .post-result-wrap,
+.posts-editorial .post-result-wrap,
+.posts-columns .post-result-wrap {
+  min-width: 0;
+}
+
+.posts-grid .post-link-button,
+.posts-editorial .post-link-button,
+.posts-columns .post-link-button {
+  height: 100%;
+}
+
+.posts-magazine {
+  display: flex;
+  flex-direction: column;
+}
+
+.posts-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 92px;
+}
+
+.posts-timeline::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  bottom: 7px;
+  left: 70px;
+  width: 1px;
+  background: var(--border);
+}
+
+.post-timeline {
+  position: relative;
+  padding: 0 0 34px;
+}
+
+.post-timeline:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-rail {
+  position: absolute;
+  top: 1px;
+  left: -92px;
+  width: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 9px;
+  color: var(--text-faint);
+  font-family: var(--font-secondary);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: .05em;
+}
+
+.timeline-rail i {
+  position: absolute;
+  top: 0;
+  right: -17px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  background: var(--text);
+}
+
+.timeline-content {
+  min-width: 0;
+}
+
+.post-timeline .post-card-meta {
+  margin-bottom: 10px;
+}
+
+.post-timeline .post-card-title {
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.post-timeline p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.posts-editorial {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.post-editorial {
+  min-height: 100%;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.post-editorial.is-featured {
+  grid-column: 1 / -1;
+  padding: 30px;
+}
+
+.post-editorial .post-card-meta {
+  margin-bottom: 12px;
+}
+
+.post-editorial h4 {
+  margin-bottom: 9px;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.post-editorial.is-featured h4 {
+  max-width: 680px;
+  font-size: 24px;
+  letter-spacing: -.025em;
+}
+
+.post-editorial p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.post-editorial.is-featured p {
+  max-width: 620px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.posts-index {
+  border-top: 1px solid var(--border-soft);
+}
+
+.post-index {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.index-number {
+  padding-top: 2px;
+  color: var(--text-faint);
+  font-family: var(--font-secondary);
+  font-size: 9px;
+  line-height: 1.4;
+  letter-spacing: .08em;
+}
+
+.index-main {
+  min-width: 0;
+}
+
+.post-index h4 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -.015em;
+  line-height: 1.35;
+}
+
+.post-index .post-card-meta {
+  overflow: visible;
+}
+
+.posts-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 36px;
+  row-gap: 0;
+}
+
+.post-columns {
+  min-width: 0;
+  padding: 0 0 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.post-columns .post-card-meta {
+  margin-bottom: 11px;
+}
+
+.post-columns h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.post-columns p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .posts-grid,
+  .posts-editorial,
+  .posts-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .post-editorial.is-featured {
+    grid-column: auto;
+    padding: 24px 20px;
+  }
+
+  .post-editorial.is-featured h4 {
+    font-size: 20px;
+  }
+
+  .posts-timeline {
+    padding-left: 62px;
+  }
+
+  .posts-timeline::before {
+    left: 46px;
+  }
+
+  .timeline-rail {
+    left: -62px;
+    width: 38px;
+    font-size: 8px;
+  }
+
+  .timeline-rail i {
+    right: -13px;
+  }
+
+  .post-timeline .post-card-title {
+    font-size: 16px;
+  }
+
+  .post-index {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 12px;
+    padding: 13px 0;
+  }
+
+  .posts-columns {
+    row-gap: 0;
+  }
+}
