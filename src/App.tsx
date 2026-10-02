@@ -59,6 +59,10 @@ export default function App() {
     ? undefined
     : posts.find(post => post.id === selectedPostId)
 
+  useEffect(() => {
+    document.title = selectedPost ? selectedPost.title + ' · Blok' : 'Blok'
+  }, [selectedPost])
+
   const closeSearch = useCallback(() => {
     setSearchOpen(false)
     setSearchQuery('')
@@ -110,13 +114,15 @@ export default function App() {
     }
 
     setIsPageTransitioning(true)
-    window.requestAnimationFrame(update)
 
     if (transitionTimerRef.current !== null) window.clearTimeout(transitionTimerRef.current)
     transitionTimerRef.current = window.setTimeout(() => {
-      setIsPageTransitioning(false)
-      if (restoreHome) restoreScroll('home')
-    }, 360)
+      transitionTimerRef.current = null
+      window.requestAnimationFrame(() => {
+        update()
+        if (restoreHome) restoreScroll('home')
+      })
+    }, 90)
   }, [restoreScroll, selectedPostId])
 
   const navigateToPost = useCallback((postOrId: Post | number | null) => {
@@ -131,7 +137,7 @@ export default function App() {
       : { kind: 'home' }
 
     navigateRoute(route)
-    setSearchOpen(false)
+    closeSearch()
     applySelection(id, id === null)
   }, [applySelection, saveScroll, selectedPostId])
 
