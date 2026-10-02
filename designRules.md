@@ -579,6 +579,28 @@ Theme:
 
 cca 0.3s.
 
+### Content transition
+
+Hlavní content stage používá editorialní vstup a opačný výstup:
+
+**Intro**
+- fade in,
+- translateY zhruba 30px → 0,
+- scale 0.965 → 1,
+- easing `cubic-bezier(.16, 1, .3, 1)`,
+- cca 680ms.
+
+**Outro**
+- fade out,
+- translateY 0 → zhruba 30px,
+- scale 1 → 0.965,
+- easing `cubic-bezier(.65, 0, .35, 1)`,
+- cca 340ms.
+
+Animuje se pouze `.page-stage`. Navbar a footer zůstávají stabilní.
+
+View Transition používá samostatný `page-content` transition name.
+
 Používej:
 
 - opacity,
