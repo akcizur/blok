@@ -131,6 +131,54 @@ export function PostCard({
     </PostLink>
   )
 
+  if (mode === 'timeline') return (
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
+      <article className={articleClassName}>
+        <div className="timeline-rail" aria-hidden="true">
+          <span>{post.date.slice(-4)}</span>
+          <i />
+        </div>
+        <div className="timeline-content">
+          <PostMeta post={post} />
+          <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
+          <p>{post.excerpt}</p>
+        </div>
+      </article>
+    </PostLink>
+  )
+
+  if (mode === 'editorial') return (
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
+      <article className={articleClassName + (index === 0 ? ' is-featured' : '')}>
+        <PostMeta post={post} />
+        <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
+        <p>{post.excerpt}</p>
+      </article>
+    </PostLink>
+  )
+
+  if (mode === 'index') return (
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
+      <article className={articleClassName}>
+        <span className="index-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+        <div className="index-main">
+          <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
+          <PostMeta post={post} compact />
+        </div>
+      </article>
+    </PostLink>
+  )
+
+  if (mode === 'columns') return (
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
+      <article className={articleClassName}>
+        <PostMeta post={post} />
+        <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
+        <p>{post.excerpt}</p>
+      </article>
+    </PostLink>
+  )
+
   return (
     <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName}>
