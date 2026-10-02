@@ -2,7 +2,7 @@
 
 ## 1. Role dokumentu
 
-Toto je vizuální pravidlovník pro Dimple / KAAP.
+Toto je vizuální pravidlovník pro Blok.
 
 Designový základ:
 
@@ -90,7 +90,7 @@ Komunikační hierarchie se řeší:
 
 ## 4. Monochrome first
 
-Dimple nemá běžný barevný accent systém.
+Blok nemá běžný barevný accent systém.
 
 Preferuj:
 
@@ -301,7 +301,7 @@ Navbar je jediná navigační vrstva. Neexistuje Settings menu ani subnavbar.
 
 Hlavní řádek obsahuje:
 
-- Dimple brand,
+- Blok brand,
 - Layout,
 - Theme,
 - Search.
@@ -552,7 +552,7 @@ Nepřidávej náhodné ikonové styly z jiných sad bez důvodu.
 
 ## 26. Brand
 
-Dimple header brand:
+Blok header brand:
 
 - 16px,
 - weight 800,
