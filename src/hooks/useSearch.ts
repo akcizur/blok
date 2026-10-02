@@ -33,6 +33,10 @@ export function useSearch(posts: Post[], query: string) {
   }, [posts, query])
 
   useEffect(() => {
+    setActiveIndex(0)
+  }, [query])
+
+  useEffect(() => {
     setActiveIndex(current => Math.min(current, Math.max(results.length - 1, 0)))
   }, [results.length])
 
