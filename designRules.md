@@ -310,11 +310,18 @@ Hlavní řádek obsahuje:
 
 Jeden kruhový button.
 
-Kliknutí cyklicky mění:
+Kliknutí cyklicky mění všech 8 režimů:
 
-List → Grid → Magazine → Compact → List
+List → Grid → Magazine → Compact → Timeline → Editorial → Index → Columns → List
 
 Uvnitř je pouze ikona aktuálního layoutu.
+
+Nové režimy:
+
+- **Timeline**: chronologická osa s rokem a bodem v levém railu.
+- **Editorial**: featured první poznámka + dvousloupcové další poznámky.
+- **Index**: číslovaný archivní seznam.
+- **Columns**: dvě čisté editorialní kolony bez card-heavy treatmentu.
 
 ### Theme
 
@@ -754,3 +761,47 @@ Při konfliktu:
     [ ] dark works
     [ ] mobile works
     [ ] 90/100/110 works
+
+## 37. Extended view modes
+
+Přepínač layoutu musí měnit skutečné rozložení obsahu, ne pouze kosmetickou variantu stejného seznamu.
+
+### Existing modes
+
+- List: základní editorialní seznam.
+- Grid: skutečná dvousloupcová mřížka.
+- Magazine: featured první poznámka + jednoduché řádky.
+- Compact: hustý jednořádkový index.
+
+### Added modes
+
+**Timeline**
+- svislý separator,
+- rok jako levý marker,
+- content vpravo,
+- bez karet.
+
+**Editorial**
+- první poznámka přes celou šířku,
+- další poznámky ve dvou sloupcích,
+- stejné monochromatické surface a border tokeny.
+
+**Index**
+- pořadové číslo,
+- title,
+- metadata,
+- bez excerptu.
+
+**Columns**
+- dvě obsahové kolony,
+- excerpt zachovaný,
+- žádný heavy card treatment.
+
+### Behaviour
+
+- stav layoutu zůstává v localStorage,
+- navbar obsahuje stále pouze jednu kruhovou layout ikonu,
+- kliknutí cykluje režimy,
+- Command Palette používá stejnou konfiguraci,
+- mobile přechází gridové režimy na jednu kolonu,
+- layout musí fungovat v light/dark theme i při 90/100/110% scale.
