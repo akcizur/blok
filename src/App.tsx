@@ -94,14 +94,12 @@ export default function App() {
     }
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const startTransition = reducedMotion
-      ? undefined
-      : (document as ViewTransitionDocument).startViewTransition
+    const viewTransitionDocument = document as ViewTransitionDocument
 
     document.documentElement.dataset.navDirection = pageDirection(selectedPostId, nextId)
 
-    if (startTransition) {
-      const transition = startTransition(update)
+    if (!reducedMotion && viewTransitionDocument.startViewTransition) {
+      const transition = viewTransitionDocument.startViewTransition(update)
       if (restoreHome && transition.finished) {
         void transition.finished.then(() => restoreScroll('home'))
       }
