@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { Command, Moon, Search, Sun, X } from 'lucide-react'
+import { Command, Moon, Search, Sun, X, type LucideIcon } from 'lucide-react'
 
 export type CommandItem = {
   id: string
   label: string
   hint?: string
   onRun: () => void
-  icon?: typeof Command
+  icon?: LucideIcon
 }
 
 type Props = {
