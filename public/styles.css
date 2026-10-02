@@ -1949,3 +1949,16 @@ html[data-reduced-motion='true'] .page-stage {
     row-gap: 0;
   }
 }
+
+
+/* Editorial article media */
+.markdown-renderer img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 32px 0 36px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
