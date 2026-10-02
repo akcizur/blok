@@ -2124,3 +2124,62 @@ html[data-reduced-motion='true'] .page-stage {
     transition: none !important;
   }
 }
+
+
+/* Vertical card rhythm */
+.post-card-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.post-card-copy .post-meta-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+
+.post-card-copy .post-hashtags {
+  margin-top: 0;
+}
+
+.post-card-copy .post-card-title {
+  margin-top: 10px;
+}
+
+.post-card-copy > p {
+  margin-top: 0;
+}
+
+.post-grid,
+.post-editorial,
+.post-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-grid,
+.post-editorial,
+.post-columns {
+  justify-content: center;
+}
+
+.post-grid .post-preview,
+.post-editorial .post-preview,
+.post-columns .post-preview {
+  flex: 0 0 auto;
+}
+
+.post-grid .post-card-copy,
+.post-editorial .post-card-copy,
+.post-columns .post-card-copy {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 640px) {
+  .post-card-copy {
+    justify-content: center;
+  }
+}
