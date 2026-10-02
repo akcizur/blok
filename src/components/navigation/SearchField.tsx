@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type KeyboardEvent } from 'react'
 import { Search, X } from 'lucide-react'
 
 type SearchFieldProps = {
@@ -58,7 +58,7 @@ export function SearchField({
     return () => document.removeEventListener('keydown', handleShortcut)
   }, [open, onOpen])
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Escape') {
       event.preventDefault()
       onClose()
