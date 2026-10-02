@@ -1,6 +1,7 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, MouseEvent as ReactMouseEvent, ReactNode } from 'react'
 import type { Post } from '../data/posts'
 import type { ViewMode } from '../config/viewModes'
+import { hrefForRoute } from '../lib/routing'
 
 type PostCardProps = {
   post: Post
@@ -11,6 +12,14 @@ type PostCardProps = {
   searchActive?: boolean
   searchResultIndex?: number
   query?: string
+}
+
+type PostLinkProps = {
+  post: Post
+  id: string
+  className: string
+  onOpen: (id: number) => void
+  children: ReactNode
 }
 
 function escapeRegExp(value: string) {
@@ -50,6 +59,33 @@ function PostMeta({ post, compact = false }: { post: Post; compact?: boolean }) 
 const sharedTitleStyle = (slug: string) =>
   ({ viewTransitionName: 'post-title-' + slug }) as CSSProperties
 
+function PostLink({ post, id, className, onOpen, children }: PostLinkProps) {
+  const handleClick = (event: ReactMouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) return
+
+    event.preventDefault()
+    onOpen(post.id)
+  }
+
+  return (
+    <a
+      id={id}
+      className={className}
+      href={hrefForRoute({ kind: 'post', slug: post.slug })}
+      onClick={handleClick}
+      aria-label={'Číst: ' + post.title}
+    >
+      {children}
+    </a>
+  )
+}
+
 export function PostCard({
   post,
   mode,
@@ -60,50 +96,48 @@ export function PostCard({
   searchResultIndex = 0,
   query,
 }: PostCardProps) {
-  const open = () => onOpen(post.id)
-  const label = 'Číst: ' + post.title
   const title = <Highlight text={post.title} query={query} />
   const resultId = 'search-result-' + searchResultIndex
-  const className = 'post-link post-link-button' + (searchActive ? ' is-search-active' : '')
+  const className = 'post-link-button' + (searchActive ? ' is-search-active' : '')
 
   if (mode === 'compact') return (
-    <button id={resultId} type="button" className={className} onClick={open} aria-label={label}>
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName}>
         <div className="compact-copy">
           <span className="compact-title" style={sharedTitleStyle(post.slug)}>{title}</span>
         </div>
         <PostMeta post={post} compact />
       </article>
-    </button>
+    </PostLink>
   )
 
   if (mode === 'magazine') return (
-    <button id={resultId} type="button" className={className} onClick={open} aria-label={label}>
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName + (index === 0 ? ' is-featured' : '')}>
         <PostMeta post={post} />
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         {index === 0 && <p>{post.excerpt}</p>}
       </article>
-    </button>
+    </PostLink>
   )
 
   if (mode === 'grid') return (
-    <button id={resultId} type="button" className={className} onClick={open} aria-label={label}>
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName}>
         <PostMeta post={post} />
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         <p>{post.excerpt}</p>
       </article>
-    </button>
+    </PostLink>
   )
 
   return (
-    <button id={resultId} type="button" className={className} onClick={open} aria-label={label}>
+    <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName}>
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         <p>{post.excerpt}</p>
         <PostMeta post={post} />
       </article>
-    </button>
+    </PostLink>
   )
 }
