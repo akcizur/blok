@@ -9,6 +9,8 @@ readTime: "6 min"
 
 # Jednoduché UI bývá nejtěžší UI
 
+![Monochromatický detail jednoduchého rozhraní](https://picsum.photos/seed/blok-simple-ui/1200/675?grayscale)
+
 Když je rozhraní plné prvků, slabé rozhodnutí se snadno ztratí. U jednoduchého UI je všechno na stole.
 
 ## Typografie je infrastruktura
