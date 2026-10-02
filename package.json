@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "format": "oxfmt",
-    "postbuild": "node scripts/copy-404.mjs"
+    "postbuild": "node scripts/generate-sitemap.mjs && node scripts/copy-404.mjs"
   },
   "dependencies": {
     "@fontsource/google-sans": "^5.3.1",
