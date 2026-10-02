@@ -103,14 +103,14 @@ export function SearchField({
         title="Vyhledávání · /"
         aria-label="Otevřít vyhledávání"
         aria-expanded={open}
-        aria-controls="blokk-search-form"
+        aria-controls="blok-search-form"
         tabIndex={open ? -1 : 0}
       >
         <Search className="ui-icon" size={15} strokeWidth={2} aria-hidden="true" />
       </button>
 
       <form
-        id="blokk-search-form"
+        id="blok-search-form"
         ref={formRef}
         className="nav-search-form"
         role="search"
