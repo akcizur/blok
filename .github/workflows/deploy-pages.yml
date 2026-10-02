@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -46,6 +48,8 @@ jobs:
           test -f dist/index.html
           test -f dist/404.html
           test -f dist/styles.css
+          test -f dist/manifest.webmanifest
+          test -f dist/sitemap.xml
           if grep -q '%BASE_URL%' dist/index.html; then
             echo "Unresolved %BASE_URL% placeholder in dist/index.html"
             exit 1
@@ -57,6 +61,7 @@ jobs:
           path: ./dist
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
