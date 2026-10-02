@@ -9,6 +9,8 @@ readTime: "6 min"
 
 # Kdy má smysl psát vlastní komponentu
 
+![Editorialní detail komponenty](https://picsum.photos/seed/blok-component/1200/675?grayscale)
+
 Komponenta je užitečná tehdy, když **snižuje opakování rozhodnutí**. Ne proto, že dokážeme obalit každý `div` do další vrstvy abstrakce.
 
 ## Tři dobré důvody
