@@ -3,8 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -14,7 +12,7 @@ permissions:
 
 concurrency:
   group: github-pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -28,6 +26,10 @@ jobs:
         with:
           node-version: 22
 
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
@@ -35,23 +37,26 @@ jobs:
         run: npm run typecheck
 
       - name: Build
+        env:
+          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
         run: npm run build
 
       - name: Verify build
-        run: test -f dist/index.html
-
-      - name: Configure GitHub Pages
-        if: github.event_name != 'pull_request'
-        uses: actions/configure-pages@v5
+        run: |
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/styles.css
+          if grep -q '%BASE_URL%' dist/index.html; then
+            echo "Unresolved %BASE_URL% placeholder in dist/index.html"
+            exit 1
+          fi
 
       - name: Upload Pages artifact
-        if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
 
   deploy:
-    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
