@@ -191,7 +191,7 @@ Aplikace používá jednoduchý statický přístup ke článkům:
 ?post=1             # legacy kompatibilita
 ```
 
-Toto je vhodné pro malé osobní publikum. Pro složitější routování by se časem hodilo zavést explicitní router.
+Routing je řešen malou vlastní vrstvou v `src/lib/routing.ts`, bez další router knihovny.
 
 ## Produkční principy
 
