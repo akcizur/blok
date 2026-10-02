@@ -182,8 +182,8 @@ Původní main zůstává nedotčený.
 - 170. Zachovat direct theme toggle.
 - 171. Zachovat direct layout toggle.
 - 172. Zachovat direct search.
-- 173. Přidat direct favorites.
-- 174. Přidat direct filters.
+- 173. Přidat favorites ovládání mimo navbar.
+- 174. Přidat filters ovládání mimo navbar.
 - 175. Zachovat minimal brand.
 - 176. Přidat brand home action.
 - 177. Zachovat footer links.
