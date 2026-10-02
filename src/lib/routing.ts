@@ -9,14 +9,19 @@ function basePath() {
 export function readRoute(): AppRoute {
   const pathname = window.location.pathname
   const base = basePath()
-  const relative = base && pathname.startsWith(base)
+  const isInsideBase = !base || pathname === base || pathname.startsWith(base + '/')
+  const relative = isInsideBase && base
     ? pathname.slice(base.length)
     : pathname.replace(/^\/+/, '')
   const clean = relative.replace(/^\/+|\/+$/g, '')
   const match = clean.match(/^post\/([^/]+)$/)
 
   if (match?.[1]) {
-    return { kind: 'post', slug: decodeURIComponent(match[1]) }
+    try {
+      return { kind: 'post', slug: decodeURIComponent(match[1]) }
+    } catch {
+      return { kind: 'home' }
+    }
   }
 
   const legacyId = new URLSearchParams(window.location.search).get('post')
