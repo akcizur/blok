@@ -1,1 +1,312 @@
-# Blok 300\n\nKontrolovaný upgrade nad původním základem repozitáře. Položky jsou atomické změny, které slouží zároveň jako review checklist.\n\n## Stav této iterace\n\nImplementována je první funkční sada změn v této větvi: persistentní favorites/history, tagy, filtrování, řazení, font scale, reduced motion, command palette, klávesové zkratky, sdílení, kopírování odkazu, tisk, article toolbar, metadata/SEO discovery, PWA manifest, robots, sitemap a responsive/accessibility styling.\n\nPůvodní main zůstává nedotčený.\n\n## 300 úprav\n\n- 1. Zachovat Vite + React 19 + TypeScript.\n- 2. Zachovat Markdown jako zdroj obsahu.\n- 3. Zachovat vlastní lehký routing.\n- 4. Zachovat GitHub Pages deployment.\n- 5. Zachovat monochromatickou paletu.\n- 6. Zachovat 768px editorialní šířku.\n- 7. Zachovat Google Sans pro UI.\n- 8. Zachovat Fragment Mono pro metadata.\n- 9. Zachovat čtyři existující view modes.\n- 10. Zachovat light/dark preference.\n- 11. Přidat persistentní oblíbené články.\n- 12. Přidat persistentní historii čtení.\n- 13. Omezit historii na 12 položek.\n- 14. Přidat filtr pouze oblíbených.\n- 15. Přidat tagový filtr.\n- 16. Přidat řazení podle data sestupně.\n- 17. Přidat řazení podle data vzestupně.\n- 18. Přidat řazení podle názvu.\n- 19. Přidat řazení podle délky.\n- 20. Přidat reset všech filtrů.\n- 21. Přidat velikost textu small.\n- 22. Přidat velikost textu normal.\n- 23. Přidat velikost textu large.\n- 24. Ukládat velikost textu.\n- 25. Ukládat řazení.\n- 26. Ukládat tag.\n- 27. Ukládat reduced-motion volbu.\n- 28. Přidat command palette.\n- 29. Přidat Ctrl/Cmd+K.\n- 30. Přidat Escape pro zavření overlay.\n- 31. Přidat klávesu F pro oblíbené.\n- 32. Přidat klávesu B pro bookmark aktuálního článku.\n- 33. Zachovat / pro vyhledávání.\n- 34. Přidat navigaci šipkami v palette.\n- 35. Přidat Enter v palette.\n- 36. Přidat aktivní stav položky palette.\n- 37. Přidat nativní Web Share API.\n- 38. Přidat fallback kopírování odkazu.\n- 39. Přidat tisk článku.\n- 40. Přidat copy-link akci v článku.\n- 41. Přidat bookmark akci v detailu.\n- 42. Přidat historii při otevření článku.\n- 43. Přidat metadata title podle článku.\n- 44. Přidat dynamický meta description.\n- 45. Přidat web manifest.\n- 46. Přidat robots.txt.\n- 47. Přidat sitemap.xml.\n- 48. Opravit relativní Vite entrypoint.\n- 49. Přidat color-scheme metadata.\n- 50. Přidat robots metadata.\n- 51. Zachovat view-transition API.\n- 52. Respektovat prefers-reduced-motion.\n- 53. Přidat vlastní reduced-motion preference.\n- 54. Zrychlit přechod při reduced motion.\n- 55. Zachovat scroll restoration.\n- 56. Zachovat skeleton loading.\n- 57. Přidat focus-visible akce.\n- 58. Přidat screen-reader-only utility.\n- 59. Zachovat keyboard search.\n- 60. Přidat aria-pressed u bookmarku.\n- 61. Přidat aria-expanded u filtrů.\n- 62. Přidat aria-label na toolbar akce.\n- 63. Přidat tooltips pro nové akce.\n- 64. Přidat vizuální active stav bookmarku.\n- 65. Přidat vizuální active stav filtru.\n- 66. Přidat vizuální active stav tagu.\n- 67. Přidat mobilní toolbar.\n- 68. Skrýt redundantní back text na mobile.\n- 69. Zachovat 32px mobile controls.\n- 70. Zachovat 36px desktop controls.\n- 71. Přidat filter panel bez dashboard stylu.\n- 72. Přidat compact tag controls.\n- 73. Přidat neutral select styling.\n- 74. Přidat filter result count.\n- 75. Přidat history strip.\n- 76. Přidat history title summary.\n- 77. Přidat reset search akci.\n- 78. Zachovat empty state.\n- 79. Zachovat search highlighting.\n- 80. Zachovat search index.\n- 81. Přidat persistent favorites storage namespace.\n- 82. Přidat storage error tolerance.\n- 83. Přidat history deduplication.\n- 84. Přidat favorite deduplication.\n- 85. Přidat tag deduplication.\n- 86. Řadit tagy lokalizovaně.\n- 87. Filtrovat tagy před fulltextem.\n- 88. Filtrovat oblíbené před fulltextem.\n- 89. Řadit výsledek deterministicky.\n- 90. Zachovat timestamp sort fallback.\n- 91. Přidat čtenářský toolbar.\n- 92. Přidat share icon.\n- 93. Přidat copy icon.\n- 94. Přidat print icon.\n- 95. Přidat bookmark icon.\n- 96. Přidat konec článku action.\n- 97. Přidat category kicker.\n- 98. Přidat read-time kicker.\n- 99. Přidat word-count kicker.\n- 100. Přidat tag metadata.\n- 101. Zachovat related posts.\n- 102. Zachovat previous/next navigation.\n- 103. Zachovat reading progress.\n- 104. Zachovat heading anchors.\n- 105. Zachovat code highlighting.\n- 106. Zachovat code copy.\n- 107. Přidat tiskovou optimalizaci.\n- 108. Skrýt navigaci při tisku.\n- 109. Skrýt toolbar při tisku.\n- 110. Zachovat break-inside code bloků.\n- 111. Přidat article end divider.\n- 112. Přidat share fallback text.\n- 113. Přidat toolbar focus states.\n- 114. Přidat toolbar hover states.\n- 115. Přidat favorite pressed state.\n- 116. Přidat article action hit area.\n- 117. Přidat command palette backdrop.\n- 118. Přidat palette blur.\n- 119. Přidat palette max-height.\n- 120. Přidat palette footer hints.\n- 121. Přidat palette query filtering.\n- 122. Přidat palette reset on open.\n- 123. Přidat palette autofocus.\n- 124. Přidat palette mouse activation.\n- 125. Přidat palette keyboard activation.\n- 126. Přidat palette empty state.\n- 127. Přidat command icon fallback.\n- 128. Přidat command labels.\n- 129. Přidat command hints.\n- 130. Přidat command action abstraction.\n- 131. Přidat font-scale data attribute.\n- 132. Přidat 94% small scale.\n- 133. Přidat 108% large scale.\n- 134. Přidat runtime scale switching.\n- 135. Přidat persisted scale.\n- 136. Přidat reduced-motion data attribute.\n- 137. Přidat runtime motion switching.\n- 138. Zachovat CSS media fallback.\n- 139. Zachovat no-animation fallback.\n- 140. Zachovat smooth UI only when allowed.\n- 141. Přidat hero kicker.\n- 142. Přidat published count.\n- 143. Zjednodušit hero copy.\n- 144. Zachovat hero typography.\n- 145. Zachovat hero whitespace.\n- 146. Zachovat site chip.\n- 147. Přidat post result summary.\n- 148. Přidat favorites count.\n- 149. Přidat filter toggle.\n- 150. Přidat filter icon.\n- 151. Přidat responsive filter row.\n- 152. Přidat responsive tag row.\n- 153. Přidat responsive history.\n- 154. Přidat responsive article toolbar.\n- 155. Přidat responsive action alignment.\n- 156. Přidat responsive command palette.\n- 157. Přidat mobile command padding.\n- 158. Přidat mobile filter width behavior.\n- 159. Přidat mobile favorite hit area.\n- 160. Přidat mobile print behavior.\n- 161. Zachovat transparent navbar.\n- 162. Zachovat navbar blur.\n- 163. Zachovat thin navbar border.\n- 164. Zachovat circular controls.\n- 165. Zachovat no subnavbar.\n- 166. Zachovat no settings menu.\n- 167. Zachovat no language button.\n- 168. Zachovat no scale button in navbar.\n- 169. Přesunout advanced controls do palette.\n- 170. Zachovat direct theme toggle.\n- 171. Zachovat direct layout toggle.\n- 172. Zachovat direct search.\n- 173. Přidat direct favorites.\n- 174. Přidat direct filters.\n- 175. Zachovat minimal brand.\n- 176. Přidat brand home action.\n- 177. Zachovat footer links.\n- 178. Zachovat footer icon hit areas.\n- 179. Zachovat footer external links.\n- 180. Zachovat footer monochrome.\n- 181. Zachovat list mode.\n- 182. Zachovat grid mode.\n- 183. Zachovat magazine mode.\n- 184. Zachovat compact mode.\n- 185. Zachovat layout cycling.\n- 186. Zachovat layout persistence.\n- 187. Přidat layout command.\n- 188. Zachovat mode-specific skeleton.\n- 189. Zachovat mode-specific cards.\n- 190. Zachovat mode-specific metadata.\n- 191. Zachovat search across title.\n- 192. Zachovat search across excerpt.\n- 193. Zachovat search across category.\n- 194. Zachovat search across date.\n- 195. Zachovat search across slug.\n- 196. Zachovat search across tags.\n- 197. Zachovat search across rendered content.\n- 198. Zachovat Czech lowercase matching.\n- 199. Zachovat active search result.\n- 200. Zachovat Enter-to-open.\n- 201. Zachovat ArrowDown search navigation.\n- 202. Zachovat ArrowUp search navigation.\n- 203. Zachovat Escape search close.\n- 204. Zachovat outside-click close.\n- 205. Zachovat slash shortcut.\n- 206. Zachovat focus restoration.\n- 207. Zachovat result count.\n- 208. Zachovat empty search state.\n- 209. Zachovat search reset.\n- 210. Zachovat no backend search.\n- 211. Zachovat static content import.\n- 212. Zachovat eager Markdown loading.\n- 213. Zachovat frontmatter parsing.\n- 214. Zachovat slug generation.\n- 215. Zachovat read-time calculation.\n- 216. Zachovat word-count calculation.\n- 217. Zachovat category fallback tags.\n- 218. Zachovat date parsing.\n- 219. Zachovat deterministic post sorting.\n- 220. Zachovat invalid id validation.\n- 221. Zachovat required title validation.\n- 222. Zachovat required excerpt validation.\n- 223. Zachovat required category validation.\n- 224. Zachovat required date validation.\n- 225. Zachovat content body parsing.\n- 226. Zachovat heading ids.\n- 227. Zachovat duplicate heading ids.\n- 228. Zachovat code language metadata.\n- 229. Zachovat GFM.\n- 230. Zachovat Markdown renderer isolation.\n- 231. Zachovat ErrorBoundary.\n- 232. Zachovat ContentSkeleton.\n- 233. Zachovat navigation component split.\n- 234. Zachovat preference hook.\n- 235. Zachovat search hook.\n- 236. Zachovat scroll hook.\n- 237. Zachovat view mode config.\n- 238. Přidat library utility.\n- 239. Přidat command palette component.\n- 240. Zachovat small components.\n- 241. Zachovat strict TypeScript.\n- 242. Zachovat ES2020 target.\n- 243. Zachovat bundler resolution.\n- 244. Zachovat noEmit.\n- 245. Zachovat Vite React plugin.\n- 246. Zachovat source maps off.\n- 247. Zachovat Pages workflow.\n- 248. Zachovat nojekyll.\n- 249. Zachovat postbuild 404 copy.\n- 250. Zachovat npm scripts.\n- 251. Přidat PWA discovery metadata.\n- 252. Přidat crawl directives.\n- 253. Přidat canonical discovery base.\n- 254. Přidat sitemap root.\n- 255. Přidat theme-color.\n- 256. Přidat color-scheme.\n- 257. Přidat manifest language.\n- 258. Přidat manifest scope.\n- 259. Přidat manifest start URL.\n- 260. Přidat minimal-ui display.\n- 261. Zachovat semantic main.\n- 262. Zachovat semantic header.\n- 263. Zachovat semantic nav.\n- 264. Zachovat semantic footer.\n- 265. Zachovat role search.\n- 266. Zachovat live result count.\n- 267. Zachovat aria labels.\n- 268. Zachovat keyboard focus.\n- 269. Zachovat visible focus ring.\n- 270. Zachovat contrast-first monochrome.\n- 271. Přidat print media rules.\n- 272. Přidat print white background.\n- 273. Přidat print dark text.\n- 274. Přidat print content width.\n- 275. Přidat print code protection.\n- 276. Přidat print navigation removal.\n- 277. Přidat print toolbar removal.\n- 278. Přidat print progress removal.\n- 279. Přidat print footer removal.\n- 280. Přidat print related navigation removal.\n- 281. Zachovat CSS token hierarchy.\n- 282. Zachovat one-pixel borders.\n- 283. Zachovat limited radius.\n- 284. Zachovat low-shadow language.\n- 285. Zachovat surface hierarchy.\n- 286. Zachovat small icons.\n- 287. Zachovat metadata mono.\n- 288. Zachovat typography hierarchy.\n- 289. Zachovat 90/100/110 discipline.\n- 290. Zachovat mobile no-overflow goal.\n- 291. Přidat upgrade architecture document.\n- 292. Přidat explicit feature namespaces.\n- 293. Přidat storage keys prefix.\n- 294. Přidat safe localStorage reads.\n- 295. Přidat safe localStorage writes.\n- 296. Přidat graceful clipboard fallback.\n- 297. Přidat graceful share fallback.\n- 298. Přidat graceful reduced-motion fallback.\n- 299. Přidat isolated upgrade branch.\n- 300. Zachovat původní main branch beze změny.\n
+# Blok 300
+
+Kontrolovaný upgrade nad původním základem repozitáře. Položky jsou atomické změny, které slouží zároveň jako review checklist.
+
+## Stav této iterace
+
+Implementována je první funkční sada změn v této větvi: persistentní favorites/history, tagy, filtrování, řazení, font scale, reduced motion, command palette, klávesové zkratky, sdílení, kopírování odkazu, tisk, article toolbar, metadata/SEO discovery, PWA manifest, robots, sitemap a responsive/accessibility styling.
+
+Původní main zůstává nedotčený.
+
+## 300 úprav
+
+- 1. Zachovat Vite + React 19 + TypeScript.
+- 2. Zachovat Markdown jako zdroj obsahu.
+- 3. Zachovat vlastní lehký routing.
+- 4. Zachovat GitHub Pages deployment.
+- 5. Zachovat monochromatickou paletu.
+- 6. Zachovat 768px editorialní šířku.
+- 7. Zachovat Google Sans pro UI.
+- 8. Zachovat Fragment Mono pro metadata.
+- 9. Zachovat čtyři existující view modes.
+- 10. Zachovat light/dark preference.
+- 11. Přidat persistentní oblíbené články.
+- 12. Přidat persistentní historii čtení.
+- 13. Omezit historii na 12 položek.
+- 14. Přidat filtr pouze oblíbených.
+- 15. Přidat tagový filtr.
+- 16. Přidat řazení podle data sestupně.
+- 17. Přidat řazení podle data vzestupně.
+- 18. Přidat řazení podle názvu.
+- 19. Přidat řazení podle délky.
+- 20. Přidat reset všech filtrů.
+- 21. Přidat velikost textu small.
+- 22. Přidat velikost textu normal.
+- 23. Přidat velikost textu large.
+- 24. Ukládat velikost textu.
+- 25. Ukládat řazení.
+- 26. Ukládat tag.
+- 27. Ukládat reduced-motion volbu.
+- 28. Přidat command palette.
+- 29. Přidat Ctrl/Cmd+K.
+- 30. Přidat Escape pro zavření overlay.
+- 31. Přidat klávesu F pro oblíbené.
+- 32. Přidat klávesu B pro bookmark aktuálního článku.
+- 33. Zachovat / pro vyhledávání.
+- 34. Přidat navigaci šipkami v palette.
+- 35. Přidat Enter v palette.
+- 36. Přidat aktivní stav položky palette.
+- 37. Přidat nativní Web Share API.
+- 38. Přidat fallback kopírování odkazu.
+- 39. Přidat tisk článku.
+- 40. Přidat copy-link akci v článku.
+- 41. Přidat bookmark akci v detailu.
+- 42. Přidat historii při otevření článku.
+- 43. Přidat metadata title podle článku.
+- 44. Přidat dynamický meta description.
+- 45. Přidat web manifest.
+- 46. Přidat robots.txt.
+- 47. Přidat sitemap.xml.
+- 48. Opravit relativní Vite entrypoint.
+- 49. Přidat color-scheme metadata.
+- 50. Přidat robots metadata.
+- 51. Zachovat view-transition API.
+- 52. Respektovat prefers-reduced-motion.
+- 53. Přidat vlastní reduced-motion preference.
+- 54. Zrychlit přechod při reduced motion.
+- 55. Zachovat scroll restoration.
+- 56. Zachovat skeleton loading.
+- 57. Přidat focus-visible akce.
+- 58. Přidat screen-reader-only utility.
+- 59. Zachovat keyboard search.
+- 60. Přidat aria-pressed u bookmarku.
+- 61. Přidat aria-expanded u filtrů.
+- 62. Přidat aria-label na toolbar akce.
+- 63. Přidat tooltips pro nové akce.
+- 64. Přidat vizuální active stav bookmarku.
+- 65. Přidat vizuální active stav filtru.
+- 66. Přidat vizuální active stav tagu.
+- 67. Přidat mobilní toolbar.
+- 68. Skrýt redundantní back text na mobile.
+- 69. Zachovat 32px mobile controls.
+- 70. Zachovat 36px desktop controls.
+- 71. Přidat filter panel bez dashboard stylu.
+- 72. Přidat compact tag controls.
+- 73. Přidat neutral select styling.
+- 74. Přidat filter result count.
+- 75. Přidat history strip.
+- 76. Přidat history title summary.
+- 77. Přidat reset search akci.
+- 78. Zachovat empty state.
+- 79. Zachovat search highlighting.
+- 80. Zachovat search index.
+- 81. Přidat persistent favorites storage namespace.
+- 82. Přidat storage error tolerance.
+- 83. Přidat history deduplication.
+- 84. Přidat favorite deduplication.
+- 85. Přidat tag deduplication.
+- 86. Řadit tagy lokalizovaně.
+- 87. Filtrovat tagy před fulltextem.
+- 88. Filtrovat oblíbené před fulltextem.
+- 89. Řadit výsledek deterministicky.
+- 90. Zachovat timestamp sort fallback.
+- 91. Přidat čtenářský toolbar.
+- 92. Přidat share icon.
+- 93. Přidat copy icon.
+- 94. Přidat print icon.
+- 95. Přidat bookmark icon.
+- 96. Přidat konec článku action.
+- 97. Přidat category kicker.
+- 98. Přidat read-time kicker.
+- 99. Přidat word-count kicker.
+- 100. Přidat tag metadata.
+- 101. Zachovat related posts.
+- 102. Zachovat previous/next navigation.
+- 103. Zachovat reading progress.
+- 104. Zachovat heading anchors.
+- 105. Zachovat code highlighting.
+- 106. Zachovat code copy.
+- 107. Přidat tiskovou optimalizaci.
+- 108. Skrýt navigaci při tisku.
+- 109. Skrýt toolbar při tisku.
+- 110. Zachovat break-inside code bloků.
+- 111. Přidat article end divider.
+- 112. Přidat share fallback text.
+- 113. Přidat toolbar focus states.
+- 114. Přidat toolbar hover states.
+- 115. Přidat favorite pressed state.
+- 116. Přidat article action hit area.
+- 117. Přidat command palette backdrop.
+- 118. Přidat palette blur.
+- 119. Přidat palette max-height.
+- 120. Přidat palette footer hints.
+- 121. Přidat palette query filtering.
+- 122. Přidat palette reset on open.
+- 123. Přidat palette autofocus.
+- 124. Přidat palette mouse activation.
+- 125. Přidat palette keyboard activation.
+- 126. Přidat palette empty state.
+- 127. Přidat command icon fallback.
+- 128. Přidat command labels.
+- 129. Přidat command hints.
+- 130. Přidat command action abstraction.
+- 131. Přidat font-scale data attribute.
+- 132. Přidat 94% small scale.
+- 133. Přidat 108% large scale.
+- 134. Přidat runtime scale switching.
+- 135. Přidat persisted scale.
+- 136. Přidat reduced-motion data attribute.
+- 137. Přidat runtime motion switching.
+- 138. Zachovat CSS media fallback.
+- 139. Zachovat no-animation fallback.
+- 140. Zachovat smooth UI only when allowed.
+- 141. Přidat hero kicker.
+- 142. Přidat published count.
+- 143. Zjednodušit hero copy.
+- 144. Zachovat hero typography.
+- 145. Zachovat hero whitespace.
+- 146. Zachovat site chip.
+- 147. Přidat post result summary.
+- 148. Přidat favorites count.
+- 149. Přidat filter toggle.
+- 150. Přidat filter icon.
+- 151. Přidat responsive filter row.
+- 152. Přidat responsive tag row.
+- 153. Přidat responsive history.
+- 154. Přidat responsive article toolbar.
+- 155. Přidat responsive action alignment.
+- 156. Přidat responsive command palette.
+- 157. Přidat mobile command padding.
+- 158. Přidat mobile filter width behavior.
+- 159. Přidat mobile favorite hit area.
+- 160. Přidat mobile print behavior.
+- 161. Zachovat transparent navbar.
+- 162. Zachovat navbar blur.
+- 163. Zachovat thin navbar border.
+- 164. Zachovat circular controls.
+- 165. Zachovat no subnavbar.
+- 166. Zachovat no settings menu.
+- 167. Zachovat no language button.
+- 168. Zachovat no scale button in navbar.
+- 169. Přesunout advanced controls do palette.
+- 170. Zachovat direct theme toggle.
+- 171. Zachovat direct layout toggle.
+- 172. Zachovat direct search.
+- 173. Přidat direct favorites.
+- 174. Přidat direct filters.
+- 175. Zachovat minimal brand.
+- 176. Přidat brand home action.
+- 177. Zachovat footer links.
+- 178. Zachovat footer icon hit areas.
+- 179. Zachovat footer external links.
+- 180. Zachovat footer monochrome.
+- 181. Zachovat list mode.
+- 182. Zachovat grid mode.
+- 183. Zachovat magazine mode.
+- 184. Zachovat compact mode.
+- 185. Zachovat layout cycling.
+- 186. Zachovat layout persistence.
+- 187. Přidat layout command.
+- 188. Zachovat mode-specific skeleton.
+- 189. Zachovat mode-specific cards.
+- 190. Zachovat mode-specific metadata.
+- 191. Zachovat search across title.
+- 192. Zachovat search across excerpt.
+- 193. Zachovat search across category.
+- 194. Zachovat search across date.
+- 195. Zachovat search across slug.
+- 196. Zachovat search across tags.
+- 197. Zachovat search across rendered content.
+- 198. Zachovat Czech lowercase matching.
+- 199. Zachovat active search result.
+- 200. Zachovat Enter-to-open.
+- 201. Zachovat ArrowDown search navigation.
+- 202. Zachovat ArrowUp search navigation.
+- 203. Zachovat Escape search close.
+- 204. Zachovat outside-click close.
+- 205. Zachovat slash shortcut.
+- 206. Zachovat focus restoration.
+- 207. Zachovat result count.
+- 208. Zachovat empty search state.
+- 209. Zachovat search reset.
+- 210. Zachovat no backend search.
+- 211. Zachovat static content import.
+- 212. Zachovat eager Markdown loading.
+- 213. Zachovat frontmatter parsing.
+- 214. Zachovat slug generation.
+- 215. Zachovat read-time calculation.
+- 216. Zachovat word-count calculation.
+- 217. Zachovat category fallback tags.
+- 218. Zachovat date parsing.
+- 219. Zachovat deterministic post sorting.
+- 220. Zachovat invalid id validation.
+- 221. Zachovat required title validation.
+- 222. Zachovat required excerpt validation.
+- 223. Zachovat required category validation.
+- 224. Zachovat required date validation.
+- 225. Zachovat content body parsing.
+- 226. Zachovat heading ids.
+- 227. Zachovat duplicate heading ids.
+- 228. Zachovat code language metadata.
+- 229. Zachovat GFM.
+- 230. Zachovat Markdown renderer isolation.
+- 231. Zachovat ErrorBoundary.
+- 232. Zachovat ContentSkeleton.
+- 233. Zachovat navigation component split.
+- 234. Zachovat preference hook.
+- 235. Zachovat search hook.
+- 236. Zachovat scroll hook.
+- 237. Zachovat view mode config.
+- 238. Přidat library utility.
+- 239. Přidat command palette component.
+- 240. Zachovat small components.
+- 241. Zachovat strict TypeScript.
+- 242. Zachovat ES2020 target.
+- 243. Zachovat bundler resolution.
+- 244. Zachovat noEmit.
+- 245. Zachovat Vite React plugin.
+- 246. Zachovat source maps off.
+- 247. Zachovat Pages workflow.
+- 248. Zachovat nojekyll.
+- 249. Zachovat postbuild 404 copy.
+- 250. Zachovat npm scripts.
+- 251. Přidat PWA discovery metadata.
+- 252. Přidat crawl directives.
+- 253. Přidat canonical discovery base.
+- 254. Přidat sitemap root.
+- 255. Přidat theme-color.
+- 256. Přidat color-scheme.
+- 257. Přidat manifest language.
+- 258. Přidat manifest scope.
+- 259. Přidat manifest start URL.
+- 260. Přidat minimal-ui display.
+- 261. Zachovat semantic main.
+- 262. Zachovat semantic header.
+- 263. Zachovat semantic nav.
+- 264. Zachovat semantic footer.
+- 265. Zachovat role search.
+- 266. Zachovat live result count.
+- 267. Zachovat aria labels.
+- 268. Zachovat keyboard focus.
+- 269. Zachovat visible focus ring.
+- 270. Zachovat contrast-first monochrome.
+- 271. Přidat print media rules.
+- 272. Přidat print white background.
+- 273. Přidat print dark text.
+- 274. Přidat print content width.
+- 275. Přidat print code protection.
+- 276. Přidat print navigation removal.
+- 277. Přidat print toolbar removal.
+- 278. Přidat print progress removal.
+- 279. Přidat print footer removal.
+- 280. Přidat print related navigation removal.
+- 281. Zachovat CSS token hierarchy.
+- 282. Zachovat one-pixel borders.
+- 283. Zachovat limited radius.
+- 284. Zachovat low-shadow language.
+- 285. Zachovat surface hierarchy.
+- 286. Zachovat small icons.
+- 287. Zachovat metadata mono.
+- 288. Zachovat typography hierarchy.
+- 289. Zachovat 90/100/110 discipline.
+- 290. Zachovat mobile no-overflow goal.
+- 291. Přidat upgrade architecture document.
+- 292. Přidat explicit feature namespaces.
+- 293. Přidat storage keys prefix.
+- 294. Přidat safe localStorage reads.
+- 295. Přidat safe localStorage writes.
+- 296. Přidat graceful clipboard fallback.
+- 297. Přidat graceful share fallback.
+- 298. Přidat graceful reduced-motion fallback.
+- 299. Přidat isolated upgrade branch.
+- 300. Zachovat původní main branch beze změny.
