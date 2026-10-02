@@ -191,7 +191,21 @@ export default function App() {
   }
   async function copyLink() {
     const href = window.location.href
-    try { await navigator.clipboard.writeText(href) } catch { /* clipboard is optional */ }
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(href)
+        return
+      }
+    } catch { /* fall through to legacy copy */ }
+
+    const textarea = document.createElement('textarea')
+    textarea.value = href
+    textarea.setAttribute('readonly', '')
+    textarea.style.position = 'fixed'
+    textarea.style.opacity = '0'
+    document.body.appendChild(textarea)
+    textarea.select()
+    try { document.execCommand('copy') } finally { textarea.remove() }
   }
   function handleSubscribe(event: FormEvent<HTMLFormElement>) { event.preventDefault(); if (email.trim()) setSubscribed(true) }
 
@@ -216,8 +230,6 @@ export default function App() {
             {!searchOpen && <>
               <button type="button" className="nav-button" onClick={handleThemeToggle} title="Motiv" aria-label="Přepnout motiv">{theme === 'light' ? <Sun className="ui-icon" size={15} aria-hidden="true" /> : <Moon className="ui-icon" size={15} aria-hidden="true" />}</button>
               <button type="button" className="nav-button" onClick={handleLayoutToggle} title={'Rozložení: ' + VIEW_MODES[viewMode].label} aria-label={'Změnit rozložení: ' + VIEW_MODES[viewMode].label}>{(() => { const Icon = VIEW_MODES[viewMode].icon; return <Icon className="ui-icon" size={15} aria-hidden="true" /> })()}</button>
-              <button type="button" className={'nav-button' + (focusFavorites ? ' is-active' : '')} onClick={() => setFocusFavorites(value => !value)} title="Oblíbené · F" aria-label="Zobrazit oblíbené"><Bookmark size={15} /></button>
-              <button type="button" className={'nav-button' + (filtersOpen ? ' is-active' : '')} onClick={() => setFiltersOpen(value => !value)} title="Filtry" aria-label="Zobrazit filtry"><Filter size={15} /></button>
             </>}
           </nav>
         </div>
