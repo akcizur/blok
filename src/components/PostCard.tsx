@@ -44,14 +44,31 @@ function Highlight({ text, query }: { text: string; query?: string }) {
   )
 }
 
-function PostMeta({ post, compact = false }: { post: Post; compact?: boolean }) {
+function PostMeta({ post, compact = false, showTags = false }: { post: Post; compact?: boolean; showTags?: boolean }) {
   return (
-    <div className={'post-card-meta' + (compact ? ' compact-meta' : '')}>
-      <span>{post.category}</span>
-      <span aria-hidden="true">·</span>
-      <span>{post.date}</span>
-      <span aria-hidden="true">·</span>
-      <span>{post.readTime}</span>
+    <div className="post-meta-stack">
+      <div className={'post-card-meta' + (compact ? ' compact-meta' : '')}>
+        <span>{post.category}</span>
+        <span aria-hidden="true">·</span>
+        <span>{post.date}</span>
+        <span aria-hidden="true">·</span>
+        <span>{post.readTime}</span>
+      </div>
+      {showTags && post.tags.length > 0 && (
+        <div className="post-hashtags" aria-label="Štítky">
+          {post.tags.slice(0, 4).map(tag => <span key={tag}>#{tag.replace(/^#/, '')}</span>)}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function CardPreview({ post, mode }: { post: Post; mode: ViewMode }) {
+  if (!post.previewImage || mode === 'compact' || mode === 'index' || mode === 'timeline') return null
+
+  return (
+    <div className={'post-preview post-preview-' + mode} aria-hidden="true">
+      <img src={post.previewImage} alt="" loading="lazy" decoding="async" />
     </div>
   )
 }
@@ -114,7 +131,8 @@ export function PostCard({
   if (mode === 'magazine') return (
     <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName + (index === 0 ? ' is-featured' : '')}>
-        <PostMeta post={post} />
+        <CardPreview post={post} mode={mode} />
+        <PostMeta post={post} showTags />
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         {index === 0 && <p>{post.excerpt}</p>}
       </article>
@@ -124,7 +142,8 @@ export function PostCard({
   if (mode === 'grid') return (
     <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName}>
-        <PostMeta post={post} />
+        <CardPreview post={post} mode={mode} />
+        <PostMeta post={post} showTags />
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         <p>{post.excerpt}</p>
       </article>
@@ -139,7 +158,7 @@ export function PostCard({
           <i />
         </div>
         <div className="timeline-content">
-          <PostMeta post={post} />
+          <PostMeta post={post} showTags />
           <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
           <p>{post.excerpt}</p>
         </div>
@@ -150,7 +169,8 @@ export function PostCard({
   if (mode === 'editorial') return (
     <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName + (index === 0 ? ' is-featured' : '')}>
-        <PostMeta post={post} />
+        <CardPreview post={post} mode={mode} />
+        <PostMeta post={post} showTags />
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         <p>{post.excerpt}</p>
       </article>
@@ -163,7 +183,7 @@ export function PostCard({
         <span className="index-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
         <div className="index-main">
           <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
-          <PostMeta post={post} compact />
+          <PostMeta post={post} compact showTags />
         </div>
       </article>
     </PostLink>
@@ -172,7 +192,8 @@ export function PostCard({
   if (mode === 'columns') return (
     <PostLink post={post} id={resultId} className={className} onOpen={onOpen}>
       <article className={articleClassName}>
-        <PostMeta post={post} />
+        <CardPreview post={post} mode={mode} />
+        <PostMeta post={post} showTags />
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         <p>{post.excerpt}</p>
       </article>
@@ -184,7 +205,7 @@ export function PostCard({
       <article className={articleClassName}>
         <h4 className="post-card-title" style={sharedTitleStyle(post.slug)}>{title}</h4>
         <p>{post.excerpt}</p>
-        <PostMeta post={post} />
+        <PostMeta post={post} showTags />
       </article>
     </PostLink>
   )
