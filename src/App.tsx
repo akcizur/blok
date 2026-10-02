@@ -333,7 +333,7 @@ export default function App() {
             <a className="footer-icon-link" href="mailto:hello@ruzickajakub.cz" title="E-mail" aria-label="Odeslat e-mail">
               <Mail className="ui-icon" size={15} strokeWidth={2} aria-hidden="true" />
             </a>
-            <a className="footer-icon-link" href="https://github.com/akcizur/blog.ruzickajakub.cz" target="_blank" rel="noreferrer" title="GitHub repozitář" aria-label="Otevřít GitHub repozitář">
+            <a className="footer-icon-link" href="https://github.com/akcizur/blok" target="_blank" rel="noreferrer" title="GitHub repozitář" aria-label="Otevřít GitHub repozitář">
               <svg className="ui-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 2.5a9.5 9.5 0 0 0-3 18.52c.47.09.64-.2.64-.45v-1.72c-2.62.57-3.18-1.26-3.18-1.26-.43-1.1-1.05-1.4-1.05-1.4-.86-.59.07-.58.07-.58.95.07 1.45.97 1.45.97.85 1.45 2.22 1.03 2.76.79.09-.61.33-1.03.6-1.27-2.09-.24-4.29-1.05-4.29-4.68 0-1.03.37-1.87.97-2.53.1-.24-.42-1.2.09-2.5 0 0 .79-.25 2.59.97A9 9 0 0 1 12 6.9c.8 0 1.6.11 2.35.33 1.8-1.22 2.59-.97 2.59-.97.51 1.3.19 2.26.09 2.5.6.66.97 1.5.97 2.53 0 3.64-2.2 4.44-4.3 4.67.34.3.64.88.64 1.78v2.64c0 .25.17.54.64.45A9.5 9.5 0 0 0 12 2.5Z" />
               </svg>
