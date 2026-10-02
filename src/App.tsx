@@ -59,7 +59,10 @@ export default function App() {
     ? undefined
     : posts.find(post => post.id === selectedPostId)
 
-  const closeSearch = useCallback(() => setSearchOpen(false), [])
+  const closeSearch = useCallback(() => {
+    setSearchOpen(false)
+    setSearchQuery('')
+  }, [])
   const openSearch = useCallback(() => setSearchOpen(true), [])
 
   useEffect(() => {
