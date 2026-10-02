@@ -1660,15 +1660,17 @@ mark {
   }
 }
 
-html[data-reduced-motion='true'] .page-stage,
+html[data-reduced-motion='true'] .page-stage {
+  animation: none !important;
+  transform: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-stage {
     animation: none !important;
     transform: none !important;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
   ::view-transition-old(page-content),
   ::view-transition-new(page-content) {
     animation: none !important;
