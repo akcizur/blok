@@ -26,11 +26,21 @@ export function SearchField({
 }: SearchFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const wasOpenRef = useRef(open)
 
   useEffect(() => {
-    if (!open) return
-    const frame = window.requestAnimationFrame(() => inputRef.current?.focus())
-    return () => window.cancelAnimationFrame(frame)
+    if (open) {
+      const frame = window.requestAnimationFrame(() => inputRef.current?.focus())
+      wasOpenRef.current = true
+      return () => window.cancelAnimationFrame(frame)
+    }
+
+    if (wasOpenRef.current) {
+      const frame = window.requestAnimationFrame(() => triggerRef.current?.focus())
+      wasOpenRef.current = false
+      return () => window.cancelAnimationFrame(frame)
+    }
   }, [open])
 
   useEffect(() => {
@@ -87,16 +97,20 @@ export function SearchField({
     <div className={`nav-search-shell${open ? ' is-open' : ''}`}>
       <button
         type="button"
+        ref={triggerRef}
         className="nav-button nav-search-trigger"
         onClick={onOpen}
         title="Vyhledávání · /"
         aria-label="Otevřít vyhledávání"
+        aria-expanded={open}
+        aria-controls="blokk-search-form"
         tabIndex={open ? -1 : 0}
       >
         <Search className="ui-icon" size={15} strokeWidth={2} aria-hidden="true" />
       </button>
 
       <form
+        id="blokk-search-form"
         ref={formRef}
         className="nav-search-form"
         role="search"
@@ -123,11 +137,10 @@ export function SearchField({
         />
 
         <button
-          type="button"
+          type="submit"
           className="nav-search-action"
-          onClick={() => inputRef.current?.focus()}
-          aria-label={`Výsledků: ${resultCount}`}
-          title={`${resultCount} výsledků`}
+          aria-label="Spustit hledání"
+          title={resultCount + " výsledků"}
           tabIndex={open ? 0 : -1}
         >
           <Search className="ui-icon" size={14} strokeWidth={2} aria-hidden="true" />
