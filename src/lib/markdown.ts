@@ -78,7 +78,7 @@ export function renderMarkdown(markdown: string) {
   html = html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/i, '')
 
   const usedIds = new Map<string, number>()
-  html = html.replace(/<h(2|3)>([\s\S]*?)<\/h(2|3)>/gi, (_match, depth: string, text: string) => {
+  html = html.replace(/<h(2|3|4)>([\s\S]*?)<\/h(2|3|4)>/gi, (_match, depth: string, text: string) => {
     const base = slugifyHeading(text) || 'section-' + depth
     const count = usedIds.get(base) ?? 0
     usedIds.set(base, count + 1)
