@@ -83,7 +83,7 @@ export function renderMarkdown(markdown: string) {
     const count = usedIds.get(base) ?? 0
     usedIds.set(base, count + 1)
     const id = count ? base + '-' + (count + 1) : base
-    return '<h' + depth + ' id="' + id + '"><a class="heading-anchor" href="#' + id + '" aria-label="Odkaz na sekci">#</a>' + text + '</h' + depth + '>'
+    return '<h' + depth + ' id="' + id + '"><a class="heading-anchor" href="#' + id + '" aria-label="Odkaz na sekci">#</a><span class="heading-text">' + text + '</span></h' + depth + '>'
   })
 
   html = html.replace(
