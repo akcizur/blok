@@ -2235,9 +2235,9 @@ html[data-reduced-motion='true'] .page-stage {
 
 .post-grid,
 .post-editorial,
-.post-columns,
 .post-magazine.is-featured {
   overflow: visible;
+  opacity: 1;
   box-shadow:
     var(--neo-shadow-light),
     var(--neo-shadow-dark);
@@ -2250,7 +2250,6 @@ html[data-reduced-motion='true'] .page-stage {
 
 .post-grid:hover,
 .post-editorial:hover,
-.post-columns:hover,
 .post-magazine.is-featured:hover {
   transform: translateY(-2px);
   box-shadow:
@@ -2260,7 +2259,6 @@ html[data-reduced-motion='true'] .page-stage {
 
 .post-grid:focus-within,
 .post-editorial:focus-within,
-.post-columns:focus-within,
 .post-magazine.is-featured:focus-within {
   box-shadow:
     var(--neo-shadow-hover),
@@ -2292,14 +2290,12 @@ html[data-reduced-motion='true'] .page-stage {
 @media (prefers-reduced-motion: reduce) {
   .post-grid,
   .post-editorial,
-  .post-columns,
   .post-magazine.is-featured {
     transition: box-shadow .01ms linear, border-color .01ms linear, background-color .01ms linear;
   }
 
   .post-grid:hover,
   .post-editorial:hover,
-  .post-columns:hover,
   .post-magazine.is-featured:hover {
     transform: none;
   }
