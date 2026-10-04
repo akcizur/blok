@@ -2300,3 +2300,160 @@ html[data-reduced-motion='true'] .page-stage {
     transform: none;
   }
 }
+
+
+/* Card geometry refinement */
+.post-grid,
+.post-editorial,
+.post-columns {
+  justify-content: flex-start;
+}
+
+.post-card-copy {
+  display: block;
+  min-height: 0;
+}
+
+.post-card-layout,
+.timeline-card-layout {
+  display: grid;
+  grid-template-columns: minmax(62px, 78px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  min-width: 0;
+}
+
+.post-card-main,
+.timeline-card-main {
+  min-width: 0;
+}
+
+.post-tag-rail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 2px 12px 0 0;
+  border-right: 1px solid var(--border-soft);
+  color: var(--text-faint);
+  font-family: var(--font-secondary);
+  font-size: 8px;
+  line-height: 1.35;
+  letter-spacing: .025em;
+  text-transform: lowercase;
+  overflow-wrap: anywhere;
+}
+
+.post-tag-rail span {
+  display: block;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.post:hover .post-tag-rail span,
+.post-link-button:focus-visible .post-tag-rail span {
+  color: var(--text-soft);
+}
+
+.post-card-main .post-card-title {
+  margin: 0 0 10px;
+}
+
+.post-card-main > p {
+  margin: 0 0 16px;
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.post-card-main .post-meta-stack {
+  padding-top: 11px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.post-card-main .post-card-meta {
+  margin: 0;
+}
+
+.timeline-card-layout {
+  grid-template-columns: minmax(58px, 72px) minmax(0, 1fr);
+  gap: 15px;
+}
+
+.timeline-card-main .post-card-title {
+  margin: 0 0 8px;
+}
+
+.timeline-card-main > p {
+  margin: 0 0 14px;
+}
+
+.timeline-card-main .post-meta-stack {
+  padding-top: 10px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.index-heading-row {
+  display: grid;
+  grid-template-columns: minmax(62px, 78px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  min-width: 0;
+}
+
+.index-heading-row .post-tag-rail {
+  min-height: 100%;
+}
+
+.index-heading-row .post-card-title {
+  margin: 0 0 8px;
+}
+
+.index-main > .post-meta-stack {
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-soft);
+}
+
+.card-favorite {
+  top: 8px;
+  right: 8px;
+  z-index: 8;
+}
+
+.post-preview {
+  position: relative;
+  z-index: 0;
+}
+
+@media (max-width: 640px) {
+  .post-card-layout,
+  .timeline-card-layout,
+  .index-heading-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .post-tag-rail {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 9px;
+    padding: 0 0 8px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .post-card-main .post-card-title {
+    margin-bottom: 9px;
+  }
+
+  .index-heading-row .post-tag-rail {
+    min-height: 0;
+  }
+
+  .card-favorite {
+    top: 7px;
+    right: 7px;
+  }
+}
